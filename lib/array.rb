@@ -27,3 +27,19 @@ class Array
     result
   end
 end
+
+def stock_picker(arr)
+
+  best_diff = 0
+  result = nil
+  arr.length.times do |i|
+    (i+1..arr.length-1).each do |j|
+      diff = arr[j] - arr[i]
+      if diff > best_diff
+        best_diff = diff
+        result = [i,j]
+      end
+    end
+  end
+  result
+end

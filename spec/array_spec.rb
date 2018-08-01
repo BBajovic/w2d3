@@ -47,3 +47,16 @@ describe '#my_transpose' do
     expect(b.my_transpose).to eq([[0, 3], [1, 4], [2, 5]])
   end
 end
+
+describe 'stock_picker' do
+  let(:a) {[0, 1, 2, 3, 4, 5]}
+  let(:b) {[6, 0, 5, 4, 3, 2]}
+
+  it 'returns array of biggest profit' do
+    expect(stock_picker(a)).to eq([0,5])
+  end
+
+  it 'should not buy before selling' do
+    expect(stock_picker(b)).to eq([1,2])
+  end
+end

@@ -11,7 +11,41 @@ class TowersOfHanoi
     towers[to] << towers[from].pop
   end
 
-  
+  def render
+    self.towers.each_with_index do |row,idx|
+      row.each do |el|
+        print  el.to_s
+      end
+      puts
+    end
+    ''
+  end
+
+  def won?
+    return true if towers[1].size == 3 || towers[2].length == 3
+    false
+  end
+
+
+  def get_input
+    print "Enter a tower number:"
+    input = gets.chomp.to_i
+  end
+
+  def play
+    puts "welcome"
+    until won?
+      begin
+      render
+      from = get_input
+      to = get_input
+      move_discs(from,to)
+      rescue
+        retry
+      end
+    end
+    puts "Congratulations, you win!"
+  end
 
 private
   def invalid_move(from, to)
@@ -28,4 +62,10 @@ end
 
 
 class IllegalMoveError < ArgumentError
+end
+
+
+if __FILE__ == $PROGRAM_NAME
+  a = TowersOfHanoi.new
+  a.play
 end

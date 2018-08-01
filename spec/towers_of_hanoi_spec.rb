@@ -28,6 +28,28 @@ describe 'towers_of_hanoi' do
   end
 
   describe '#won?' do
-    
+    before do
+      a.move_discs(0,1)
+      a.move_discs(0,2)
+      a.move_discs(1,2)
+      a.move_discs(0,1)
+      a.move_discs(2,0)
+      a.move_discs(2,1)
+      a.move_discs(0,1)
+
+    end
+    it 'should have the first tower empty' do
+      expect(a.towers[0]).to be_empty
+    end
+
+    it 'should have a full tower besides the first' do
+      expect(a.towers[1].size || a.towers[2].size).to eq(3)
+    end
+  end
+
+  describe '#render' do
+    it 'should render a string' do
+      expect(a.render).to be_a(String)
+    end
   end
 end
